@@ -6,6 +6,7 @@ import {
   DollarSignIcon 
 } from 'lucide-react';
 
+
 export const Dashboard: React.FC = () => {
   const statsCards = [
     { 
