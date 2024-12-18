@@ -4,7 +4,8 @@ import {
     HomeIcon, 
     Users as PatientIcon, 
     User as DoctorIcon, 
-    Calendar as CalendarIcon } from 'lucide-react';
+    Calendar as CalendarIcon,
+    UserRoundPlus as NewPeople } from 'lucide-react';
 
 
 export const Sidebar: React.FC = () =>{
@@ -14,6 +15,7 @@ export const Sidebar: React.FC = () =>{
     const menuItems = [
         { path: '/', icon: HomeIcon, label: 'Dashboard' },
         { path: '/patients', icon: PatientIcon, label: 'Patients' },
+        { path: '/new-patient-form', icon: NewPeople, label: 'Add New Patient' },
         { path: '/doctors', icon: DoctorIcon, label: 'Doctors' },
         { path: '/appointments', icon: CalendarIcon, label: 'Appointments' }
     ]
