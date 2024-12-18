@@ -1,5 +1,5 @@
 import React from "react";
-import { PatientTable } from "../components/patients/PatientTable";
+import { PatientTable } from "../components/tables/PatientTable";
 import { PatientData } from "../data/patients";
 
 
