@@ -1,11 +1,12 @@
 import React from "react";
 
+
 interface Patient {
   id: number;
   name: string;
   gender: string;
   age: number;
-  contact: string;
+  contactNumber: string;
 }
 
 interface PatientTableProps {
@@ -35,7 +36,7 @@ export const PatientTable: React.FC<PatientTableProps> = (props) => {
                 <td className="px-6 py-4">{patient.name}</td>
                 <td className="px-6 py-4">{patient.gender}</td>
                 <td className="px-6 py-4">{patient.age}</td>
-                <td className="px-6 py-4">{patient.contact}</td>
+                <td className="px-6 py-4">{patient.contactNumber}</td>
               </tr>
             ))}
           </tbody>

@@ -21,7 +21,6 @@ export const Sidebar: React.FC = () =>{
     ]
     
     return (
-        <>
         <div className='w-64 bg-slate-800 shadow-md h-screen'>
             <div className="p-4 text-center border-b">
                 <h1 className="text-2xl font-bold text-teal-300">PSKM Admin</h1>
@@ -42,6 +41,5 @@ export const Sidebar: React.FC = () =>{
                 ))}
             </nav>
         </div>
-        </>
     )
 } 

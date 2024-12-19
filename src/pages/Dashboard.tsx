@@ -65,8 +65,6 @@ export const Dashboard: React.FC = () => {
           </div>
         ))}
       </div>
-
-      {/* Quick Actions & Recent Activities would go here */}
     </div>
   );
 };

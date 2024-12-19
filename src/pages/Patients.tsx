@@ -6,9 +6,7 @@ import { PatientData } from "../data/patients";
 export const Patients: React.FC = () => {
 
     return (
-        <>
         <PatientTable patients= {PatientData}/>
-        </>
     )
 }
 
