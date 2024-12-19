@@ -21,9 +21,9 @@ export const Sidebar: React.FC = () =>{
     ]
     
     return (
-        <div className='w-64 bg-slate-800 shadow-md h-screen'>
+        <div className='bg-slate-800 shadow-md h-screen w-24 md:w-64 transition-all'>
             <div className="p-4 text-center border-b">
-                <h1 className="text-2xl font-bold text-teal-300">PSKM Admin</h1>
+                <h1 className="text-2xl font-bold text-teal-300 md:block hidden">PSKM Admin</h1>
             </div>
             <nav className='p-4'>
                 {menuItems.map(item => (
@@ -35,8 +35,8 @@ export const Sidebar: React.FC = () =>{
                           ? 'bg-slate-600 text-blue-600' 
                           : 'hover:bg-slate-500 text-gray-700'}
                         `}>
-                            <item.icon className="mr-3" size={20} />
-                            {item.label}
+                            <item.icon className="mr-0 md:mr-3" size={20} />
+                            <span className="hidden md:inline">{item.label}</span>
                     </Link>
                 ))}
             </nav>
