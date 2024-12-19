@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Sidebar } from "./components/Sidebar";
 import { Dashboard } from "./pages/Dashboard";
 import { Patients } from "./pages/Patients";
-import { PatientForm } from "./components/forms/Patientform";
+import { PatientForm } from "./components/forms/PatientForm";
 
 
 const App: React.FC = () => {
