@@ -4,6 +4,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Dashboard } from "./pages/Dashboard";
 import { Patients } from "./pages/Patients";
 import { PatientForm } from "./components/forms/PatientForm";
+import { Appointment } from "./pages/Appointment";
 
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/patients" element={<Patients />} />
                 <Route path="/new-patient-form" element={<PatientForm />} />
+                <Route path="/appointments" element={<Appointment/>} />
               </Routes>
             </main>
         </div>
