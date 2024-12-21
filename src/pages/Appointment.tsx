@@ -5,6 +5,6 @@ import { Calendar } from "../components/Calendar";
 export const Appointment: React.FC = () => {
 
     return (
-        <Calendar/>
+        <Calendar></Calendar>
     )
 }

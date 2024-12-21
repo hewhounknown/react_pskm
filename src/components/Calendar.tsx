@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MonthNames } from "../data/months";
 import { DaysOfWeek } from "../data/daysofweek";
 
+
 export const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<string | null>(null);

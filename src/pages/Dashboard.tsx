@@ -42,29 +42,27 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="p-6 w-full">
       <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
-      
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {statsCards.map((card) => (
-          <div 
-            key={card.title}
-            className={`
-              ${card.bgColor} p-6 rounded-lg shadow-md flex items-center 
-              justify-between hover:scale-105 transition-transform
-            `}
-          >
-            <div>
-              <h3 className={`text-sm font-medium ${card.textColor}`}>
-                {card.title}
-              </h3>
-              <p className={`text-2xl font-bold ${card.textColor}`}>
-                {card.value}
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {statsCards.map((card) => (
+            <div 
+              key={card.title}
+              className={`
+                ${card.bgColor} p-6 rounded-lg shadow-md flex items-center 
+                justify-between hover:scale-105 transition-transform
+              `}
+            >
+              <div>
+                <h3 className={`text-sm font-medium ${card.textColor}`}>
+                  {card.title}
+                </h3>
+                <p className={`text-2xl font-bold ${card.textColor}`}>
+                  {card.value}
+                </p>
+              </div>
+              <card.icon size={40} className={card.textColor} />
             </div>
-            <card.icon size={40} className={card.textColor} />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
     </div>
   );
 };
