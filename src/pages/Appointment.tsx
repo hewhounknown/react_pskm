@@ -5,6 +5,10 @@ import { Calendar } from "../components/Calendar";
 export const Appointment: React.FC = () => {
 
     return (
-        <Calendar></Calendar>
+        <div className="grid grid-cols-3 gap-1">
+            <div className="col-span-2">
+                <Calendar/>
+            </div>
+        </div>
     )
 }

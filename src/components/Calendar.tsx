@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {ArrowLeft, ArrowRight} from 'lucide-react'
 import { MonthNames } from "../data/months";
 import { DaysOfWeek } from "../data/daysofweek";
 
@@ -55,18 +56,18 @@ export const Calendar: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center h-screen">
-      <div className="lg:w-7/12 md:w-9/12 sm:w-10/12 mx-auto p-4">
+    <div className="bg-gray-100 flex items-center justify-center h-screen ">
+      <div className="md:w-9/12 sm:w-10/12 ">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="flex items-center justify-between px-6 py-3 bg-gray-700">
             <button onClick={handlePrevMonth} className="text-black">
-              Previous
+              <ArrowLeft/>
             </button>
             <h2 className="text-white">
               {MonthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
             </h2>
             <button onClick={handleNextMonth} className="text-black">
-              Next
+              <ArrowRight/>
             </button>
           </div>
           <div className="grid grid-cols-7 gap-2 p-4">
