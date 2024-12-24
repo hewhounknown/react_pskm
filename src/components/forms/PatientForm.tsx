@@ -10,10 +10,10 @@ interface PatientFormData {
     email: string;
     address: string;
     guardian: string;
+    [key: string]: string;
 }
 
 export const PatientForm: React.FC = () => {
-
     const [formData, setFormData] = useState<PatientFormData>({
         name: '',
         dateOfBirth: '',
@@ -73,6 +73,16 @@ export const PatientForm: React.FC = () => {
         }
       };
 
+    const inputFields = [
+        { name: 'name', label: 'Name *', type: 'text', required: true },
+        { name: 'dateOfBirth', label: 'Date of Birth *', type: 'date', required: true },
+        { name: 'gender', label: 'Gender *', type: 'select', options: ['Select Gender', 'male', 'female', 'other'], required: true },
+        { name: 'contactNumber', label: 'Contact Number *', type: 'text', required: true },
+        { name: 'email', label: 'Email', type: 'text' },
+        { name: 'address', label: 'Address', type: 'text' },
+        { name: 'guardian', label: 'Guardian *', type: 'text', required: true },
+    ];
+
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-4">
             <div className="flex items-center mb-6">
@@ -82,113 +92,34 @@ export const PatientForm: React.FC = () => {
             <form onSubmit={handleSubmit} className="">
                 {/*input block start*/}
                 <div className="flex flex-wrap -mx-2">
-                    
-                    <div className="w-full md:w-1/2 px-2 mb-2">
-                        <label htmlFor="name" className="block text-gray-700 mb-2">Name *</label>
-                        <div className="relative">
-                            <input 
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 `}/>
-                            {errors.name && (
-                                <span className="text-red-500 text-sm">{errors.name}</span>
-                            )}
+                    {inputFields.map((field) => (
+                        <div className="w-full md:w-1/2 px-2 mb-2" key={field.name}>
+                            <label htmlFor={field.name} className="block text-gray-700 mb-2">{field.label}</label>
+                            <div className="relative">
+                                {field.type === 'select' && field.options ? (
+                                    <select 
+                                        name={field.name}
+                                        value={formData[field.name]}
+                                        onChange={handleInputChange}
+                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}>
+                                        {field.options.map(option => (
+                                            <option key={option} value={option === 'Select Gender' ? '' : option}>{option}</option>
+                                        ))}
+                                    </select>
+                                ) : (
+                                    <input 
+                                        type={field.type}
+                                        name={field.name}
+                                        value={formData[field.name]}
+                                        onChange={handleInputChange}
+                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`} />
+                                )}
+                                {field.required && errors[field.name] && (
+                                    <span className="text-red-500 text-sm">{errors[field.name]}</span>
+                                )}
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="w-full md:w-1/2 px-2 mb-2">
-                        <label htmlFor="dateOfBirth" className="block text-gray-700 mb-2">Date of Birth *</label>
-                        <div className="relative">
-                            <input 
-                                type="date"
-                                name="dateOfBirth"
-                                value={formData.dateOfBirth}
-                                onChange={handleInputChange}
-                                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 `}/>
-                            {errors.dateOfBirth && (
-                                <span className="text-red-500 text-sm">{errors.dateOfBirth}</span>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="w-full md:w-1/2 px-2 mb-2">
-                        <label htmlFor="gender" className="block text-gray-700 mb-2">Gender *</label>
-                        <div className="relative">
-                            <select 
-                                name="gender"
-                                value={formData.gender}
-                                onChange={handleInputChange}
-                                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}>
-                                    <option value="">Select Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Other</option>
-                            </select>
-                            {errors.gender && (
-                                <span className="text-red-500 text-sm">{errors.gender}</span>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="w-full md:w-1/2 px-2 mb-2">
-                        <label htmlFor="contactNumber" className="block text-gray-700 mb-2">Contact Number *</label>
-                        <div className="relative">
-                            <input 
-                                type="text"
-                                name="contactNumber"
-                                value={formData.contactNumber}
-                                onChange={handleInputChange}
-                                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}/>
-                            {errors.contactNumber && (
-                                <span className="text-red-500 text-sm">{errors.contactNumber}</span>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="w-full md:w-1/2 px-2 mb-2">
-                        <label htmlFor="email" className="block text-gray-700 mb-2">Email </label>
-                        <div className="relative">
-                            <input 
-                                type="text" 
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}/>
-                            {errors.email && (
-                                <span className="text-red-500 text-sm">{errors.email}</span>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="w-full md:w-1/2 px-2 mb-2">
-                        <label htmlFor="address" className="block text-gray-700 mb-2">Address </label>
-                        <div className="relative">
-                            <input 
-                                type="text"
-                                name="address"
-                                value={formData.address}
-                                onChange={handleInputChange}
-                                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}/>
-                        </div>
-                    </div>
-
-                    <div className="w-full md:w-1/2 px-2 mb-2">
-                        <label htmlFor="guardian" className="block text-gray-700 mb-2">Guardian *</label>
-                        <div className="relative">
-                            <input 
-                                type="text"
-                                name="guardian"
-                                value={formData.guardian}
-                                onChange={handleInputChange}
-                                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}/>
-                            {errors.guardian && (
-                                <span className="text-red-500 text-sm">{errors.guardian}</span>
-                            )}
-                        </div>
-                    </div>
-
+                    ))}
                 </div>
                 {/*input block end*/}
 
