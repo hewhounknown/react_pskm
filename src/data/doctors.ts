@@ -19,5 +19,40 @@ export const DoctorData = [
         specialty: "Dermatologist",
         availability: ["Mon-Fri 10AM-6PM"],
         contact: "+1 (555) 345-6789",
+      },
+      {
+        id: "3",
+        name: "Dr. Emily Brown",
+        specialty: "Dermatologist",
+        availability: ["Mon-Fri 10AM-6PM"],
+        contact: "+1 (555) 345-6789",
+      },
+      {
+        id: "3",
+        name: "Dr. Emily Brown",
+        specialty: "Dermatologist",
+        availability: ["Mon-Fri 10AM-6PM"],
+        contact: "+1 (555) 345-6789",
+      },
+      {
+        id: "3",
+        name: "Dr. Emily Brown",
+        specialty: "Dermatologist",
+        availability: ["Mon-Fri 10AM-6PM"],
+        contact: "+1 (555) 345-6789",
+      },
+      {
+        id: "3",
+        name: "Dr. Emily Brown",
+        specialty: "Dermatologist",
+        availability: ["Mon-Fri 10AM-6PM"],
+        contact: "+1 (555) 345-6789",
+      },
+      {
+        id: "3",
+        name: "Dr. Emily Brown",
+        specialty: "Dermatologist",
+        availability: ["Mon-Fri 10AM-6PM"],
+        contact: "+1 (555) 345-6789",
       }
 ]

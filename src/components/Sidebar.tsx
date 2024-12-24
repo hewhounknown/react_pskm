@@ -22,7 +22,7 @@ export const Sidebar: React.FC = () =>{
     
     return (
         <div className='bg-slate-800 shadow-md h-screen w-24 md:w-64 transition-all'>
-            <div className="p-4 text-center border-b">
+            <div className="p-4 text-center">
                 <h1 className="text-2xl font-bold text-teal-300 md:block hidden">PSKM Admin</h1>
             </div>
             <nav className='p-4'>
