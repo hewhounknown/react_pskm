@@ -29,7 +29,10 @@ export const Appointment: React.FC = () => {
                 />
             </div>
             <div>
-                <Schedule />
+                <Schedule
+                    selectedDate={selectedDate}
+                    appointments={appointments}
+                />
             </div>
         </div>
     )
