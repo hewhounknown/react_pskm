@@ -6,6 +6,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Patients } from "./pages/Patients";
 import { PatientForm } from "./components/forms/PatientForm";
 import { Doctors } from "./pages/Doctors";
+import { DoctorForm } from "./components/forms/DoctorForm";
 import { Appointment } from "./pages/Appointment";
 
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
                 <Route path="/patients" element={<Patients />} />
                 <Route path="/new-patient-form" element={<PatientForm />} />
                 <Route path="/doctors" element={<Doctors/>} />
+                <Route path="/new-doctor-form" element={<DoctorForm/>} />
                 <Route path="/appointments" element={<Appointment/>} />
               </Routes>
             </main>

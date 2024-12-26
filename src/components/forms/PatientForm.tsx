@@ -103,7 +103,12 @@ export const PatientForm: React.FC = () => {
                                         onChange={handleInputChange}
                                         className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}>
                                         {field.options.map(option => (
-                                            <option key={option} value={option === 'Select Gender' ? '' : option}>{option}</option>
+                                            <option 
+                                            key={option} 
+                                            value={option === 'Select Gender' ? '' : option}
+                                            >
+                                                {option}
+                                            </option>
                                         ))}
                                     </select>
                                 ) : (
@@ -123,12 +128,12 @@ export const PatientForm: React.FC = () => {
                 </div>
                 {/*input block end*/}
 
-                <div className="mt-6 self-end">
+                <div className="mt-6">
                     <button 
                         type="submit" 
                         className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
                         hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded
-                        flex item-center">
+                        flex">
                         <Save className="mr-2" size={20} />
                         Register
                     </button>

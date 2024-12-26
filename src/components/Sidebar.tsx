@@ -17,6 +17,7 @@ export const Sidebar: React.FC = () =>{
         { path: '/patients', icon: PatientIcon, label: 'Patients' },
         { path: '/new-patient-form', icon: NewPeople, label: 'Add New Patient' },
         { path: '/doctors', icon: DoctorIcon, label: 'Doctors' },
+        { path: '/new-doctor-form', icon: NewPeople, label: 'Add New Doctor'},
         { path: '/appointments', icon: CalendarIcon, label: 'Appointments' }
     ]
     
