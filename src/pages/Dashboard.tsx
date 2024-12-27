@@ -1,6 +1,7 @@
 import React from 'react';
 import { statsCards } from '../data/statscards';
 import { StatCard } from '../components/StatCard';
+import { LineChart } from '../components/charts/LineChart';
 
 
 export const Dashboard: React.FC = () => {
@@ -19,6 +20,11 @@ export const Dashboard: React.FC = () => {
               textColor={card.textColor}
             />
           ))}
+        </div>
+        <div className="grid grid-cols-3 gap-4 mt-4">
+          <div className="col-span-2">
+              <LineChart/>
+          </div>
         </div>
     </div>
   );
