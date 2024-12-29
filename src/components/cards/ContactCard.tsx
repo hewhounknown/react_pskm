@@ -1,5 +1,10 @@
 import React from "react";
 import PatientIcon from "../../assets/imgs/patient1.png"
+import { 
+    PhoneCallIcon, 
+    MapPinHouse, 
+    Droplet, PersonStanding} from "lucide-react";
+
 
 export const ContactCard: React.FC = () => {
     return (
@@ -9,12 +14,22 @@ export const ContactCard: React.FC = () => {
             </div>
             <div className="px-6 py-4">
                 <div className="text-xl font-semibold text-gray-800">Dr. James Wilson</div>
-                <p className="text-gray-600">Pediatrician</p>
-            </div>
+                <p className="text-gray-600 text-sm inline-flex items-center">
+                    < PhoneCallIcon /> 09-234-2424-2
+                </p>
+                <p className="text-gray-600 text-sm inline-flex items-center">
+                    < MapPinHouse /> No. 35, THI, Oc
+                </p>
+            </div> <hr />
             <div className="px-6 py-4">
-                <span className="inline-block px-2 py-1 font-semibold text-teal-900 bg-teal-200 rounded-full">Web</span>
-                <span className="inline-block px-2 py-1 font-semibold text-indigo-900 bg-indigo-200 rounded-full">UI/UX</span>
-                <span className=" px-2 py-1 font-semibold text-purple-900 bg-purple-200 rounded-full">Design</span>
+                <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded 
+                dark:bg-gray-700 dark:text-red-400 border border-red-400 inline-flex items-center">
+                  <Droplet />  A
+                </span>
+                <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded 
+                dark:bg-gray-700 dark:text-green-400 border border-green-400 inline-flex items-center">
+                   <PersonStanding /> Male
+                </span>
             </div>
         </div>
     )
