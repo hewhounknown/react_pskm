@@ -1,5 +1,5 @@
 import React from "react";
-import { ContactCard } from "../components/ContactCard";
+import { ContactCard } from "../components/cards/ContactCard";
 
 
 export const Profile: React.FC = () => {
