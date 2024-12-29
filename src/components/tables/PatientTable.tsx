@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 interface Patient {
@@ -33,7 +34,11 @@ export const PatientTable: React.FC<PatientTableProps> = (props) => {
                 className={`hover:bg-gray-100 ${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}
               >
                 <td className="px-6 py-4">{patient.id}</td>
-                <td className="px-6 py-4">{patient.name}</td>
+                <td className="px-6 py-4">
+                    <Link to={`profile/`}>
+                        {patient.name}
+                    </Link>
+                </td>
                 <td className="px-6 py-4">{patient.gender}</td>
                 <td className="px-6 py-4">{patient.age}</td>
                 <td className="px-6 py-4">{patient.contactNumber}</td>
@@ -43,4 +48,4 @@ export const PatientTable: React.FC<PatientTableProps> = (props) => {
         </table>
       </div>
     )
-}
+} 

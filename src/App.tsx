@@ -8,6 +8,7 @@ import { PatientForm } from "./components/forms/PatientForm";
 import { Doctors } from "./pages/Doctors";
 import { DoctorForm } from "./components/forms/DoctorForm";
 import { Appointment } from "./pages/Appointment";
+import { Profile } from "./pages/Profile";
 
 
 const App: React.FC = () => {
@@ -21,12 +22,13 @@ const App: React.FC = () => {
                     < TopBar />
                 </div>
               <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/patients" element={<Patients />} />
-                <Route path="/new-patient-form" element={<PatientForm />} />
-                <Route path="/doctors" element={<Doctors/>} />
-                <Route path="/new-doctor-form" element={<DoctorForm/>} />
-                <Route path="/appointments" element={<Appointment/>} />
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/patients" element={<Patients />} />
+                  <Route path="/new-patient-form" element={<PatientForm />} />
+                  <Route path="/doctors" element={<Doctors />} />
+                  <Route path="/new-doctor-form" element={<DoctorForm />} />
+                  <Route path="/appointments" element={<Appointment />} />
+                  <Route path="/patients/profile" element={<Profile />}/>
               </Routes>
             </main>
         </div>
