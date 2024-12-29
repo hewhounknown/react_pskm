@@ -1,7 +1,18 @@
 import React from "react";
 
 
-export const HistoryTable: React.FC = () => {
+interface History{
+    date: string;
+    treatment: string;
+    doctor: string;
+    charges: number;
+}
+
+interface HistoryTableProps{
+    histories: History[];
+}
+
+export const HistoryTable: React.FC<HistoryTableProps> = (props) => {
 
     return (
         <div>
@@ -14,6 +25,18 @@ export const HistoryTable: React.FC = () => {
                         <th className="px-6 py-3 font-medium">Charges</th>
                     </tr>
                 </thead>
+                <tbody>
+                    {props.histories.map((history, index) => (
+                        <tr 
+                        className={`hover:bg-gray-100 ${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}
+                        >
+                            <td className="px-6 py-4">{history.date}</td>
+                            <td className="px-6 py-4">{history.treatment}</td>
+                            <td className="px-6 py-4">{history.doctor}</td>
+                            <td className="px-6 py-4">{history.charges}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
         </div>
     )
