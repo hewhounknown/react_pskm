@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import { Sidebar } from "./components/Sidebar";
 import { TopBar } from "./components/TopBar";
 import { Dashboard } from "./pages/Dashboard";
@@ -9,7 +9,6 @@ import { Doctors } from "./pages/Doctors";
 import { DoctorForm } from "./components/forms/DoctorForm";
 import { Appointment } from "./pages/Appointment";
 import { Profile } from "./pages/Profile";
-
 
 const App: React.FC = () => {
 
@@ -28,12 +27,17 @@ const App: React.FC = () => {
                   <Route path="/doctors" element={<Doctors />} />
                   <Route path="/new-doctor-form" element={<DoctorForm />} />
                   <Route path="/appointments" element={<Appointment />} />
-                  <Route path="/patients/profile" element={<Profile />}/>
+                  <Route path="/patients/profile/:id" element={<ProfileWrapper />} />
               </Routes>
             </main>
         </div>
     </Router>
   )
+}
+
+const ProfileWrapper: React.FC = () => {
+    const { id } = useParams<{ id: string }>();
+    return <Profile id={Number(id)} />;
 }
 
 export default App;

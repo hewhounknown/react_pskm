@@ -35,7 +35,7 @@ export const PatientTable: React.FC<PatientTableProps> = (props) => {
               >
                 <td className="px-6 py-4">{patient.id}</td>
                 <td className="px-6 py-4">
-                    <Link to={`profile/`}>
+                    <Link to={`profile/${patient.id}`}>
                         {patient.name}
                     </Link>
                 </td>

@@ -15,7 +15,7 @@ interface HistoryTableProps{
 export const HistoryTable: React.FC<HistoryTableProps> = (props) => {
 
     return (
-        <div>
+        <div className="bg-white shadow-lg p-3">
             <table className="w-full border-collapse bg-white text-left text-sm text-gray-600">
                 <thead className="bg-gray-200 text-gray-700">
                     <tr>
