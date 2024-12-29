@@ -1,12 +1,11 @@
 import React from "react";
-import DoctorIcon from "../assets/imgs/doctor.png";
-
+import PatientIcon from "../../assets/imgs/patient1.png"
 
 export const ContactCard: React.FC = () => {
     return (
         <div className="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
             <div className="relative">
-                <img className="w-full object-cover" src={DoctorIcon} alt="" />
+                <img className="w-full object-cover" src={PatientIcon} alt="" />
             </div>
             <div className="px-6 py-4">
                 <div className="text-xl font-semibold text-gray-800">Dr. James Wilson</div>
