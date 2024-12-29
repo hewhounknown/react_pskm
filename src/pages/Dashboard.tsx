@@ -2,6 +2,7 @@ import React from 'react';
 import { statsCards } from '../data/statscards';
 import { StatCard } from '../components/cards/StatCard';
 import { LineChart } from '../components/charts/LineChart';
+import { RoomStatusDonutChart } from '../components/charts/RoomStatusDonutChart';
 
 
 export const Dashboard: React.FC = () => {
@@ -24,6 +25,9 @@ export const Dashboard: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mt-4">
           <div className="col-span-2">
               <LineChart/>
+          </div>
+          <div className='col-span-1'>
+              <RoomStatusDonutChart />
           </div>
         </div>
     </div>
