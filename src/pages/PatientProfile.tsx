@@ -5,7 +5,7 @@ import { ProgressBar } from "../components/charts/ProgressBar";
 import { HistoryTable } from "../components/tables/HistoryTable";
 
 
-export const Profile: React.FC<{id: number}> = ({id}) => {
+export const PatientProfile: React.FC<{id: number}> = ({id}) => {
 
     const patient = PatientData.find(p => p.id === id);
     const historyData = patient ? patient.histories : [];

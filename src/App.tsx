@@ -8,7 +8,7 @@ import { PatientForm } from "./components/forms/PatientForm";
 import { Doctors } from "./pages/Doctors";
 import { DoctorForm } from "./components/forms/DoctorForm";
 import { Appointment } from "./pages/Appointment";
-import { Profile } from "./pages/Profile";
+import { PatientProfile } from "./pages/PatientProfile";
 
 const App: React.FC = () => {
 
@@ -27,17 +27,17 @@ const App: React.FC = () => {
                   <Route path="/doctors" element={<Doctors />} />
                   <Route path="/new-doctor-form" element={<DoctorForm />} />
                   <Route path="/appointments" element={<Appointment />} />
-                  <Route path="/patients/profile/:id" element={<ProfileWrapper />} />
+                  <Route path="/patients/profile/:id" element={<PatientProfileWrapper />} />
               </Routes>
             </main>
         </div>
     </Router>
   )
 }
-
-const ProfileWrapper: React.FC = () => {
+ 
+const PatientProfileWrapper: React.FC = () => {
     const { id } = useParams<{ id: string }>();
-    return <Profile id={Number(id)} />;
+    return <PatientProfile id={Number(id)} />;
 }
 
 export default App;
