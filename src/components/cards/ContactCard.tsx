@@ -6,6 +6,7 @@ import {
     Droplet, 
     PersonStanding,
     Shield } from "lucide-react";
+import { ContactItem } from "../ContactItem";
 
 
 interface ContactProps{
@@ -38,25 +39,13 @@ export const ContactCard: React.FC<ContactProps> = (props) => {
             </div> <hr />
             <div className="px-6 py-4">
                 {props.contactNumber && (
-                    <p className="text-gray-600 text-sm inline-flex items-center mt-2">
-                        <PhoneCallIcon  className="me-3 text-green-500"/> {props.contactNumber}
-                    </p>
+                    <ContactItem itemIcon={PhoneCallIcon} iconColor="text-green-500" itemName={props.contactNumber} />
                 )}
                 {props.address && (
-                    <>
-                        <hr/>
-                        <p className="text-gray-600 text-sm inline-flex items-center mt-2">
-                            <MapPinHouse className="me-3 text-blue-800" /> {props.address}
-                        </p> 
-                    </>
+                    <ContactItem itemIcon={MapPinHouse} iconColor="text-blue-800" itemName={props.address} />
                 )}
                 {props.guardian && (
-                    <>
-                        <hr/>
-                        <p className="text-gray-600 text-sm inline-flex items-center mt-2">
-                            < Shield className="me-3 text-pink-800" /> {props.guardian}
-                        </p>
-                    </>
+                    <ContactItem itemIcon={Shield} iconColor="text-pink-800" itemName={props.guardian} />
                 )}
             </div> 
         </div>
