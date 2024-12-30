@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { UserPlus, Save } from 'lucide-react';
 
 
-interface PatientFormData {
+interface PatientFormState {
     name: string;
     dateOfBirth: string;
     gender: string;
@@ -15,7 +15,7 @@ interface PatientFormData {
 }
 
 export const PatientForm: React.FC = () => {
-    const [formData, setFormData] = useState<PatientFormData>({
+    const [formData, setFormData] = useState<PatientFormState>({
         name: '',
         dateOfBirth: '',
         gender: '',
@@ -26,7 +26,7 @@ export const PatientForm: React.FC = () => {
         guardian: ''
     });
 
-    const [errors, setErrors] = useState<Partial<PatientFormData>>({});
+    const [errors, setErrors] = useState<Partial<PatientFormState>>({});
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -37,7 +37,7 @@ export const PatientForm: React.FC = () => {
     };
 
     const validateForm = () => {
-        const newErrors: Partial<PatientFormData> = {};
+        const newErrors: Partial<PatientFormState> = {};
     
         if (!formData.name.trim()) newErrors.name = 'Patient Name is required';
         if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
@@ -93,7 +93,7 @@ export const PatientForm: React.FC = () => {
                 <UserPlus className="mr-3 text-blue-600" size={32} />
                 <h2 className="text-2xl font-bold text-gray-800">New Patient Registration</h2>
             </div>
-            <form onSubmit={handleSubmit} className="">
+            <form onSubmit={handleSubmit}>
                 {/*input block start*/}
                 <div className="flex flex-wrap -mx-2">
                     {inputFields.map((field) => (
