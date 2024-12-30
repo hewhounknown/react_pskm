@@ -1,5 +1,4 @@
 import React from "react";
-
 import { 
     PhoneCallIcon, 
     MapPinHouse, 
@@ -8,6 +7,7 @@ import {
     Shield,
     Cake } from "lucide-react";
 import { ContactItem } from "../ContactItem";
+import { ContactBadge } from "../ContactBadge";
 
 
 interface ContactProps{
@@ -30,15 +30,9 @@ export const ContactCard: React.FC<ContactProps> = (props) => {
             <div className="px-6 py-4">
                 <div className="text-xl font-semibold text-gray-800 mb-2">{props.name}</div>
                 {props.bloodType && (
-                    <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded 
-                    dark:bg-gray-700 dark:text-red-400 border border-red-400 inline-flex items-center">
-                        <Droplet />  {props.bloodType}
-                    </span>
+                    <ContactBadge bandageIcon={Droplet} bandageColor="red" bandageTitle={props.bloodType} />
                 )}
-                <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded 
-                dark:bg-gray-700 dark:text-green-400 border border-green-400 inline-flex items-center">
-                   <PersonStanding /> {props.gender}
-                </span>
+                <ContactBadge bandageIcon={PersonStanding} bandageColor="green" bandageTitle={props.gender} />
             </div> <hr />
             <div className="px-6 py-4">
                 {props.contactNumber && (
