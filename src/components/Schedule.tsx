@@ -6,6 +6,7 @@ interface ScheduleProps {
 }
 
 export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }) => {
+    console.log(selectedDate)
     const dateString = selectedDate.toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',

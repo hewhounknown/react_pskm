@@ -37,6 +37,8 @@ export const DoctorForm: React.FC = () => {
     };
 
     const [errors, setErrors] = useState<Partial<DoctorFormState>>({})
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
     const validateForm = () => {
         const newErrors: Partial<DoctorFormState> = {};
@@ -61,7 +63,8 @@ export const DoctorForm: React.FC = () => {
         
         if (validateForm()) {
             console.log('Doctor Registration Data:', formData);
-            alert('Doctor Registered Successfully!');
+            setAlertMessage('Patient Registered Successfully!');
+            setShowAlert(true);
 
             setFormData({
                 name: '',
@@ -74,6 +77,10 @@ export const DoctorForm: React.FC = () => {
                 salary: '',
             })
         }
+    }
+
+    const closeAlert = () => {
+        setShowAlert(false);
     }
 
     const inputFields = [
@@ -89,6 +96,7 @@ export const DoctorForm: React.FC = () => {
 
     return (
         <div className="max-w-4xl p-5 mx-auto bg-white shadow-md rounded-lg mt-4">
+            {showAlert && <AlertBox message={alertMessage} onClose={closeAlert} />}
             <div className="flex items-center mb-6">
                 <UserPlus className="mr-3 text-blue-600" size={32} />
                 <h2 className="text-2xl font-bold text-gray-800">New Doctor Registration</h2>

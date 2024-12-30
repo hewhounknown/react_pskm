@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { UserPlus, Save } from 'lucide-react';
+import {AlertBox} from '../AlertBox';
 
 
 interface PatientFormState {
@@ -27,6 +28,8 @@ export const PatientForm: React.FC = () => {
     });
 
     const [errors, setErrors] = useState<Partial<PatientFormState>>({});
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -61,7 +64,8 @@ export const PatientForm: React.FC = () => {
         if (validateForm()) {
           // TODO: Implement actual patient registration logic
           console.log('Patient Registration Data:', formData);
-          alert('Patient Registered Successfully!');
+          setAlertMessage('Patient Registered Successfully!');
+          setShowAlert(true);
           
           setFormData({
             name: '',
@@ -74,13 +78,17 @@ export const PatientForm: React.FC = () => {
             guardian: ''
           });
         }
-      };
+    };
+
+    const closeAlert = () => {
+        setShowAlert(false);
+    };
 
     const inputFields = [
         { name: 'name', label: 'Name *', type: 'text', required: true },
         { name: 'dateOfBirth', label: 'Date of Birth *', type: 'date', required: true },
         { name: 'gender', label: 'Gender *', type: 'select', options: ['Select Gender', 'male', 'female', 'other'], required: true },
-        { name: 'bloodType', label: 'Blood Type *', type: 'select', options: ['Select Blood Type', 'A', 'B', 'O', 'AB']},
+        { name: 'bloodType', label: 'Blood Type', type: 'select', options: ['Select Blood Type', 'A', 'B', 'O', 'AB']},
         { name: 'contactNumber', label: 'Contact Number *', type: 'text', required: true },
         { name: 'email', label: 'Email', type: 'text' },
         { name: 'address', label: 'Address', type: 'text' },
@@ -89,6 +97,7 @@ export const PatientForm: React.FC = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-4">
+            {showAlert && <AlertBox message={alertMessage} onClose={closeAlert} />}
             <div className="flex items-center mb-6">
                 <UserPlus className="mr-3 text-blue-600" size={32} />
                 <h2 className="text-2xl font-bold text-gray-800">New Patient Registration</h2>
