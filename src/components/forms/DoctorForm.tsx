@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { UserPlus, Save } from 'lucide-react';
+import { AlertBox } from "../AlertBox";
 
 
 interface DoctorFormState{
@@ -81,8 +82,8 @@ export const DoctorForm: React.FC = () => {
         { name: 'role', label: 'Role *', type: 'text', required: true },
         { name: 'gender', label: 'Gender *', type: 'select', options: ['Select Gender', 'male', 'female', 'other'], required: true },
         { name: 'contactNumber', label: 'Contact Number *', type: 'text', required: true },
-        { name: 'email', label: 'Email', type: 'text', required: true },
-        { name: 'address', label: 'Address', type: 'text', required: true },
+        { name: 'email', label: 'Email', type: 'text'},
+        { name: 'address', label: 'Address', type: 'text'},
         { name: 'salary', label: 'Salary *', type: 'number', required: true },
     ];
 
@@ -92,22 +93,23 @@ export const DoctorForm: React.FC = () => {
                 <UserPlus className="mr-3 text-blue-600" size={32} />
                 <h2 className="text-2xl font-bold text-gray-800">New Doctor Registration</h2>
             </div>
-            <form  onClick={handleSubmit}>
-                <div className="flex flex-wrap">
+            <form onSubmit={handleSubmit}>
+                {/*input block start*/}
+                <div className="flex flex-wrap -mx-2">
                     {inputFields.map((field) => (
-                        <div className="w-full md:w-1/2 px-2 mb-2">
-                            <label htmlFor="" className="block text-gray-700 mb-2">{field.label}</label>
-                            <div>
+                        <div className="w-full md:w-1/2 px-2 mb-2" key={field.name}>
+                            <label htmlFor={field.name} className="block text-gray-700 mb-2">{field.label}</label>
+                            <div className="relative">
                                 {field.type === 'select' && field.options ? (
                                     <select 
-                                    name={field.name}
-                                    value={formData[field.name]}
-                                    onChange={handleInputChange}
-                                    className='w-full p-2 border rounded-md focus:outline-none focus:ring-2'>
-                                        {field.options.map((option) => (
-                                           <option 
+                                        name={field.name}
+                                        value={formData[field.name]}
+                                        onChange={handleInputChange}
+                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}>
+                                        {field.options.map((option, index) => (
+                                            <option 
                                             key={option} 
-                                            value={option === 'Select Gender' ? '' : option}
+                                            value={index === 0 ? '' : option}
                                             >
                                                 {option}
                                             </option>
@@ -115,11 +117,11 @@ export const DoctorForm: React.FC = () => {
                                     </select>
                                 ) : (
                                     <input 
-                                    type={field.type}
-                                    name={field.name}
-                                    value={formData[field.name]}
-                                    onChange={handleInputChange}
-                                    className="w-full p-2 border rounded-md focus:outline-none focus:ring-2" />
+                                        type={field.type}
+                                        name={field.name}
+                                        value={formData[field.name]}
+                                        onChange={handleInputChange}
+                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`} />
                                 )}
                                 {field.required && errors[field.name] && (
                                     <span className="text-red-500 text-sm">{errors[field.name]}</span>
@@ -128,10 +130,15 @@ export const DoctorForm: React.FC = () => {
                         </div>
                     ))}
                 </div>
-                <div className="mt-4">
-                    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
-                    hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded flex">
-                         <Save className="mr-2" size={20} />
+                {/*input block end*/}
+
+                <div className="mt-6">
+                    <button 
+                        type="submit" 
+                        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+                        hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded
+                        flex">
+                        <Save className="mr-2" size={20} />
                         Register
                     </button>
                 </div>
