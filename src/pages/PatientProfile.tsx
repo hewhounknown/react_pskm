@@ -17,7 +17,8 @@ export const PatientProfile: React.FC<{id: number}> = ({id}) => {
                 {patient && <ContactCard 
                 name={patient.name} bloodType={patient.bloodType} 
                 gender={patient.gender} contactNumber={patient.contactNumber} 
-                address={patient.address} guardian={patient.guardian} />}
+                address={patient.address} guardian={patient.guardian}
+                dateOfBirth={patient.dateOfBirth} />}
             </div>
             <div className="col-span-3">
                 {healthMetrics && <ProgressBar 

@@ -5,7 +5,8 @@ import {
     MapPinHouse, 
     Droplet, 
     PersonStanding,
-    Shield } from "lucide-react";
+    Shield,
+    Cake } from "lucide-react";
 import { ContactItem } from "../ContactItem";
 
 
@@ -16,6 +17,7 @@ interface ContactProps{
     contactNumber?: string;
     address?: string;
     guardian?: string;
+    dateOfBirth: string;
 }
 
 export const ContactCard: React.FC<ContactProps> = (props) => {
@@ -43,6 +45,9 @@ export const ContactCard: React.FC<ContactProps> = (props) => {
                 )}
                 {props.address && (
                     <ContactItem itemIcon={MapPinHouse} iconColor="text-blue-800" itemName={props.address} />
+                )}
+                {props.dateOfBirth && (
+                    <ContactItem itemIcon={Cake} iconColor="text-blue-gray" itemName={props.dateOfBirth} />
                 )}
                 {props.guardian && (
                     <ContactItem itemIcon={Shield} iconColor="text-pink-800" itemName={props.guardian} />

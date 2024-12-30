@@ -49,6 +49,7 @@ export const DoctorForm: React.FC = () => {
         if(!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
         if(!formData.role) newErrors.role = 'Role is required';
         if(!formData.contactNumber.trim()) newErrors.contactNumber = 'Contact Number is required';
+        if(!formData.availability.trim()) newErrors.availability = 'Availability is required';
         if(!formData.salary) newErrors.salary = 'Salary is required'
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
