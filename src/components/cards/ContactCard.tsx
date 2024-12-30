@@ -24,7 +24,7 @@ export const ContactCard: React.FC<PatientContactProps> = (props) => {
                 <img className="w-full object-cover" src={PatientIcon} alt="" />
             </div>
             <div className="px-6 py-4">
-                <div className="text-xl font-semibold text-gray-800">{props.name}</div>
+                <div className="text-xl font-semibold text-gray-800 mb-2">{props.name}</div>
                 <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded 
                 dark:bg-gray-700 dark:text-red-400 border border-red-400 inline-flex items-center">
                   <Droplet />  {props.bloodType}

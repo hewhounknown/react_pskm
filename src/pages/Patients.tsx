@@ -7,10 +7,10 @@ import { SearchBox } from "../components/Searchbox";
 export const Patients: React.FC = () => {
 
     return (
-        <>
-        <SearchBox></SearchBox>
-        <PatientTable patients= {PatientData}/>
-        </>
+        <div className="m-3">
+            <SearchBox />
+            <PatientTable patients= {PatientData}/>
+        </div>
     )
 }
 
