@@ -1,6 +1,7 @@
 import React from "react";
 import { PatientData } from "../data/patients";
 import { ContactCard } from "../components/cards/ContactCard";
+import PatientIconPath from "../assets/imgs/patient1.png"
 import { ProgressBar } from "../components/charts/ProgressBar";
 import { HistoryTable } from "../components/tables/HistoryTable";
 
@@ -14,7 +15,7 @@ export const PatientProfile: React.FC<{id: number}> = ({id}) => {
     return (
         <div className="grid grid-cols-4 gap-3 p-3">
             <div className="col-span-1">
-                {patient && <ContactCard 
+                {patient && <ContactCard profilePath={PatientIconPath}
                 name={patient.name} bloodType={patient.bloodType} 
                 gender={patient.gender} contactNumber={patient.contactNumber} 
                 address={patient.address} guardian={patient.guardian}

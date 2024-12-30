@@ -9,6 +9,7 @@ import { Doctors } from "./pages/Doctors";
 import { DoctorForm } from "./components/forms/DoctorForm";
 import { Appointment } from "./pages/Appointment";
 import { PatientProfile } from "./pages/PatientProfile";
+import { DoctorProfile } from "./pages/DoctorProfile";
 
 const App: React.FC = () => {
 
@@ -20,25 +21,30 @@ const App: React.FC = () => {
                 <div>
                     < TopBar />
                 </div>
-              <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/patients" element={<Patients />} />
-                  <Route path="/new-patient-form" element={<PatientForm />} />
-                  <Route path="/doctors" element={<Doctors />} />
-                  <Route path="/new-doctor-form" element={<DoctorForm />} />
-                  <Route path="/appointments" element={<Appointment />} />
-                  <Route path="/patients/profile/:id" element={<PatientProfileWrapper />} />
-              </Routes>
+                <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/patients" element={<Patients />} />
+                    <Route path="/new-patient-form" element={<PatientForm />} />
+                    <Route path="/doctors" element={<Doctors />} />
+                    <Route path="/new-doctor-form" element={<DoctorForm />} />
+                    <Route path="/appointments" element={<Appointment />} />
+                    <Route path="/patients/profile/:id" element={<PatientProfileWrapper />} />
+                    <Route path="/doctors/profile/:id" element={<DoctorProfileWrapper />} />
+                </Routes>
             </main>
         </div>
     </Router>
   )
 }
- 
+
 const PatientProfileWrapper: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     return <PatientProfile id={Number(id)} />;
 }
 
-export default App;
+const DoctorProfileWrapper: React.FC = () => {
+    const {id} = useParams<{id: string}>();
+    return <DoctorProfile id={String(id)} />
+}
 
+export default App;

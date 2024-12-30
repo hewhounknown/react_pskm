@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 interface Doctor{
@@ -34,7 +35,9 @@ export const DoctorTable: React.FC<DoctorTableProps> = ({doctors}) => {
                             className="hover:bg-gray-50 transition-colors"
                         >
                             <td className="px-6 py-4">
-                                <div className="text-sm font-medium text-gray-900">{doctor.name}</div>
+                                <div className="text-sm font-medium text-gray-900">
+                                    <Link to={`profile/${doctor.id}`}>{doctor.name}</Link>
+                                </div>
                             </td>
                             <td className="px-6 py-4">
                                 <div className="text-sm text-gray-600">{doctor.specialty}</div>

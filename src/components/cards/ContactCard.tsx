@@ -1,5 +1,5 @@
 import React from "react";
-import PatientIcon from "../../assets/imgs/patient1.png"
+
 import { 
     PhoneCallIcon, 
     MapPinHouse, 
@@ -11,6 +11,7 @@ import { ContactItem } from "../ContactItem";
 
 
 interface ContactProps{
+    profilePath: string
     name: string;
     bloodType?: string;
     gender: string;
@@ -24,7 +25,7 @@ export const ContactCard: React.FC<ContactProps> = (props) => {
     return (
         <div className="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
             <div className="relative">
-                <img className="w-full object-cover" src={PatientIcon} alt="" />
+                <img className="w-full object-cover" src={props.profilePath} alt="" />
             </div>
             <div className="px-6 py-4">
                 <div className="text-xl font-semibold text-gray-800 mb-2">{props.name}</div>
