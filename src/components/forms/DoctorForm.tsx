@@ -12,6 +12,7 @@ interface DoctorFormState{
     email: string;
     address: string;
     salary: string ;
+    availability: string;
     [key: string]: string;
 }
 
@@ -26,6 +27,7 @@ export const DoctorForm: React.FC = () => {
         email: '',
         address: '',
         salary: '',
+        availability: '',
     })
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -75,6 +77,7 @@ export const DoctorForm: React.FC = () => {
                 email: '',
                 address: '',
                 salary: '',
+                availability: '',
             })
         }
     }
@@ -92,6 +95,7 @@ export const DoctorForm: React.FC = () => {
         { name: 'email', label: 'Email', type: 'text'},
         { name: 'address', label: 'Address', type: 'text'},
         { name: 'salary', label: 'Salary *', type: 'number', required: true },
+        { name: 'availability', label: 'Availability *', type: 'text', required: true },
     ];
 
     return (
@@ -129,7 +133,8 @@ export const DoctorForm: React.FC = () => {
                                         name={field.name}
                                         value={formData[field.name]}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`} />
+                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}
+                                        placeholder={field.name === "availability" ? 'Mon-Fri 8am-5pm, Sat 3pm-9pm...' : ''} />
                                 )}
                                 {field.required && errors[field.name] && (
                                     <span className="text-red-500 text-sm">{errors[field.name]}</span>
