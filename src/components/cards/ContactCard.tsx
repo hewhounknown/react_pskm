@@ -1,13 +1,17 @@
 import React from "react";
+import { ContactItem } from "../ContactItem";
+import { ContactBadge } from "../ContactBadge";
 import { 
     PhoneCallIcon, 
     MapPinHouse, 
     Droplet, 
     PersonStanding,
     Shield,
-    Cake } from "lucide-react";
-import { ContactItem } from "../ContactItem";
-import { ContactBadge } from "../ContactBadge";
+    Cake,
+    Stethoscope,
+    AlarmClock,
+    Mail,
+    CreditCard } from "lucide-react";
 
 
 interface ContactProps{
@@ -19,6 +23,10 @@ interface ContactProps{
     address?: string;
     guardian?: string;
     dateOfBirth: string;
+    role?: string;
+    availability?: string;
+    email?: string;
+    salary?: number;
 }
 
 export const ContactCard: React.FC<ContactProps> = (props) => {
@@ -33,6 +41,9 @@ export const ContactCard: React.FC<ContactProps> = (props) => {
                     <ContactBadge bandageIcon={Droplet} bandageColor="red" bandageTitle={props.bloodType} />
                 )}
                 <ContactBadge bandageIcon={PersonStanding} bandageColor="green" bandageTitle={props.gender} />
+                {props.role && (
+                    <ContactBadge bandageIcon={Stethoscope} bandageColor="purple" bandageTitle={props.role} />
+                )}
             </div> <hr />
             <div className="px-6 py-4">
                 {props.contactNumber && (
@@ -47,6 +58,16 @@ export const ContactCard: React.FC<ContactProps> = (props) => {
                 {props.guardian && (
                     <ContactItem itemIcon={Shield} iconColor="text-pink-800" itemName={props.guardian} />
                 )}
+                {props.email && (
+                    <ContactItem itemIcon={Mail} iconColor="text-blue-300" itemName={props.email} />
+                )}
+                {props.availability && (
+                    <ContactItem itemIcon={AlarmClock} iconColor="text-green-300" itemName={props.availability} />
+                )}                
+                {props.salary && (
+                    <ContactItem itemIcon={CreditCard} iconColor="text-cyan-300" itemName={String(props.salary)} />
+                )}
+                {}
             </div> 
         </div>
     )

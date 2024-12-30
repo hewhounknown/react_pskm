@@ -6,7 +6,7 @@ interface Doctor{
     id: string;
     name: string;
     specialty: string;
-    availability: string[];
+    availability: string;
     contact: string;
 }
 
@@ -44,7 +44,7 @@ export const DoctorTable: React.FC<DoctorTableProps> = ({doctors}) => {
                             </td>
                             <td className="px-6 py-4">
                                 <div className="text-sm text-gray-600">
-                                {doctor.availability.join(', ')}
+                                {doctor.availability}
                                 </div>
                             </td>
                             <td className="px-6 py-4">

@@ -13,13 +13,13 @@ export const DoctorProfile: React.FC<{id: string}> = ({id}) => {
             <div className="col-span-1">
                 {doctor && 
                     <ContactCard profilePath={DoctorIconPath} name={doctor.name} gender={doctor.gender} 
-                    dateOfBirth={doctor.dateOfBirth}/>
+                    dateOfBirth={doctor.dateOfBirth} role={doctor.specialty} availability={doctor.availability}
+                    address={doctor.address} email={doctor.email} salary={doctor.salary}/>
                 }
             </div>
             <div className="col-span-3">
-
+                
             </div>
-
         </div>
     )
 }
