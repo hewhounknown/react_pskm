@@ -3,15 +3,18 @@ import PatientIcon from "../../assets/imgs/patient1.png"
 import { 
     PhoneCallIcon, 
     MapPinHouse, 
-    Droplet, PersonStanding} from "lucide-react";
+    Droplet, 
+    PersonStanding,
+    Shield } from "lucide-react";
 
 
 interface PatientContactProps{
     name: string;
-    bloodType: string;
+    bloodType?: string;
     gender: string;
     contactNumber: string;
     address?: string;
+    guardian: string;
 }
 
 export const ContactCard: React.FC<PatientContactProps> = (props) => {
@@ -37,6 +40,9 @@ export const ContactCard: React.FC<PatientContactProps> = (props) => {
                 </p> <hr />
                 <p className="text-gray-600 text-sm inline-flex items-center mt-2">
                     < MapPinHouse className="me-3 text-blue-800" /> {props.address}
+                </p> <hr/>
+                <p className="text-gray-600 text-sm inline-flex items-center mt-2">
+                    < Shield className="me-3 text-pink-800" /> {props.guardian}
                 </p>
             </div> 
         </div>

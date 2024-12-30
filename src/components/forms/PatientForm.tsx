@@ -7,6 +7,7 @@ interface PatientFormData {
     dateOfBirth: string;
     gender: string;
     contactNumber: string;
+    bloodType: string;
     email: string;
     address: string;
     guardian: string;
@@ -18,6 +19,7 @@ export const PatientForm: React.FC = () => {
         name: '',
         dateOfBirth: '',
         gender: '',
+        bloodType: '',
         contactNumber: '',
         email: '',
         address: '',
@@ -65,6 +67,7 @@ export const PatientForm: React.FC = () => {
             name: '',
             dateOfBirth: '',
             gender: '',
+            bloodType: '',
             contactNumber: '',
             email: '',
             address: '',
@@ -77,6 +80,7 @@ export const PatientForm: React.FC = () => {
         { name: 'name', label: 'Name *', type: 'text', required: true },
         { name: 'dateOfBirth', label: 'Date of Birth *', type: 'date', required: true },
         { name: 'gender', label: 'Gender *', type: 'select', options: ['Select Gender', 'male', 'female', 'other'], required: true },
+        { name: 'bloodType', label: 'Blood Type *', type: 'select', options: ['Select Blood Type', 'A', 'B', 'O', 'AB']},
         { name: 'contactNumber', label: 'Contact Number *', type: 'text', required: true },
         { name: 'email', label: 'Email', type: 'text' },
         { name: 'address', label: 'Address', type: 'text' },
@@ -102,10 +106,10 @@ export const PatientForm: React.FC = () => {
                                         value={formData[field.name]}
                                         onChange={handleInputChange}
                                         className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}>
-                                        {field.options.map(option => (
+                                        {field.options.map((option, index) => (
                                             <option 
                                             key={option} 
-                                            value={option === 'Select Gender' ? '' : option}
+                                            value={index === 0 ? '' : option}
                                             >
                                                 {option}
                                             </option>

@@ -14,7 +14,10 @@ export const Profile: React.FC<{id: number}> = ({id}) => {
     return (
         <div className="grid grid-cols-4 gap-3 p-3">
             <div className="col-span-1">
-                {patient && <ContactCard name={patient.name} bloodType={patient.bloodType} gender={patient.gender} contactNumber={patient.contactNumber} address={patient.address} />}
+                {patient && <ContactCard 
+                name={patient.name} bloodType={patient.bloodType} 
+                gender={patient.gender} contactNumber={patient.contactNumber} 
+                address={patient.address} guardian={patient.guardian} />}
             </div>
             <div className="col-span-3">
                 {healthMetrics && <ProgressBar 
