@@ -11,7 +11,7 @@ interface ChartState {
     options: ApexOptions;
 }
 
-export const LineChart: React.FC = () => {
+export const PerformanceLineChart: React.FC = () => {
   const [state, setState] = React.useState<ChartState>({
         series: [{
             name: "James",
