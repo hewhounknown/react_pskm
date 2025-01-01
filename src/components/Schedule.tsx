@@ -2,7 +2,7 @@ import React from "react";
 
 interface ScheduleProps {
   selectedDate: Date;
-  appointments: Record<string, any[]>;
+  appointments: any[];
 }
 
 export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }) => {
@@ -16,13 +16,16 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
 
     const formatDate = (date: Date) => {
         const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
     };
 
     const dateKey = formatDate(selectedDate);
-    const todayAppointments = appointments[dateKey] || [];
+    console.log('Looking for appointments on:', dateKey);
+    console.log('Available appointments:', appointments);
+    const todayAppointments = appointments.filter(appt => appt.date === dateKey);
+    console.log('Found appointments:', todayAppointments);
 
     return (
         <div className="bg-white h-screen overflow-auto">

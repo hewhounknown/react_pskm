@@ -6,7 +6,7 @@ import { DaysOfWeek } from "../data/daysofweek";
 interface CalendarProps {
     selectedDate: Date;
     onDateSelect: (date: Date) => void;
-    appointments: Record<string, any[]>;
+    appointments: any[];
 }
 
 export const Calendar: React.FC<CalendarProps> = ({selectedDate, onDateSelect, appointments}) => {
@@ -23,8 +23,9 @@ export const Calendar: React.FC<CalendarProps> = ({selectedDate, onDateSelect, a
 
     const formatDate = (d: number) => {
         const year = current.getFullYear();
-        const month = current.getMonth() + 1; 
-        return `${year}-${month}-${d}`; 
+        const month = (current.getMonth() + 1).toString().padStart(2, '0');
+        const day = d.toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
     };
 
     return (
@@ -51,14 +52,15 @@ export const Calendar: React.FC<CalendarProps> = ({selectedDate, onDateSelect, a
                         {Array.from({length: firstDay}).map((_, i) => <div key={`empty-${i}`}/>)}
                         {days.map(d => {
                             const today = new Date();
-                            const dateKey = formatDate(d);
+                            const date = formatDate(d);
+                            console.log('Checking date:', date, 'Appointments:', appointments);
                             const isToday = d === today.getDate() && 
                                 current.getMonth() === today.getMonth() && 
                                 current.getFullYear() === today.getFullYear();
                             const isSelected = d === selectedDate.getDate() && 
                                 current.getMonth() === selectedDate.getMonth() && 
                                 current.getFullYear() === selectedDate.getFullYear();
-                            const hasAppts = Boolean(appointments[dateKey]?.length>0);
+                            const hasAppts = appointments.some(appt => appt.date === date);
 
                           return (
                               <button
