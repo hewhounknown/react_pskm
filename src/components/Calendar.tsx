@@ -53,7 +53,6 @@ export const Calendar: React.FC<CalendarProps> = ({selectedDate, onDateSelect, a
                         {days.map(d => {
                             const today = new Date();
                             const date = formatDate(d);
-                            console.log('Checking date:', date, 'Appointments:', appointments);
                             const isToday = d === today.getDate() && 
                                 current.getMonth() === today.getMonth() && 
                                 current.getFullYear() === today.getFullYear();

@@ -6,7 +6,6 @@ interface ScheduleProps {
 }
 
 export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }) => {
-    console.log(selectedDate)
     const dateString = selectedDate.toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
@@ -21,10 +20,9 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
         return `${year}-${month}-${day}`;
     };
 
-    const dateKey = formatDate(selectedDate);
-    console.log('Looking for appointments on:', dateKey);
-    console.log('Available appointments:', appointments);
-    const todayAppointments = appointments.filter(appt => appt.date === dateKey);
+    const date = formatDate(selectedDate);
+    console.log('Looking for appointments on:', date);
+    const todayAppointments = appointments.filter(appt => appt.date === date);
     console.log('Found appointments:', todayAppointments);
 
     return (
