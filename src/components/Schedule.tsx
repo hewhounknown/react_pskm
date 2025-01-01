@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { AppointmentForm } from "./forms/AppointmentForm";
 
 interface ScheduleProps {
   selectedDate: Date;
@@ -6,6 +7,7 @@ interface ScheduleProps {
 }
 
 export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const dateString = selectedDate.toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
@@ -24,6 +26,8 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
     console.log('Looking for appointments on:', date);
     const todayAppointments = appointments.filter(appt => appt.date === date);
     console.log('Found appointments:', todayAppointments);
+
+
 
     return (
         <div className="bg-white h-screen overflow-auto">
@@ -56,6 +60,30 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
                         ))
                     )}
                 </div>
+            </div>
+            
+            <div className="flex justify-center mt-auto pb-4">
+                <button 
+                    onClick={() => setIsModalOpen(true)}
+                    className="block text-white bg-indigo-400 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+                    type="button"
+                >
+                    Add Appointment
+                </button>
+
+                {isModalOpen && (
+                    <div 
+                        className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50"
+                        onClick={() => setIsModalOpen(false)}
+                    >
+                        <div 
+                            className="relative p-4 w-full max-w-2xl bg-white rounded-lg"
+                            onClick={e => e.stopPropagation()}
+                        >
+                            <AppointmentForm desiredDate={date}/>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
