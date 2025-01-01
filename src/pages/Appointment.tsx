@@ -7,8 +7,6 @@ import { AppointmentData } from "../data/appointments";
 export const Appointment: React.FC = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-    const appointments = AppointmentData;
-
     return (
         <div className="grid grid-cols-3 gap-1">
             <div className="col-span-2">
