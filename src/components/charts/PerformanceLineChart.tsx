@@ -52,7 +52,7 @@ export const PerformanceLineChart: React.FC<LineChartProps> = (props) => {
   });
 
   return (
-    <div>
+    <div className="bg-white rounded-sm shadow-sm p-4">
       <div id="chart">
         <ReactApexChart
           options={state.options}
