@@ -1,7 +1,7 @@
 import React from 'react';
 import { statsCards } from '../data/statscards';
 import { StatCard } from '../components/cards/StatCard';
-import { PerformanceLineChart } from '../components/charts/LineChart';
+import { PerformanceLineChart } from '../components/charts/PerformanceLineChart';
 import { RoomStatusDonutChart } from '../components/charts/RoomStatusDonutChart';
 
 
