@@ -11,28 +11,16 @@ interface ChartState {
     options: ApexOptions;
 }
 
-export const PerformanceLineChart: React.FC = () => {
+interface LineChartProps {
+    series: {
+        name: string;
+        data: number[];
+    }[];
+}
+
+export const PerformanceLineChart: React.FC<LineChartProps> = (props) => {
   const [state, setState] = React.useState<ChartState>({
-        series: [{
-            name: "James",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        },
-        {
-            name: "Cicie",
-            data: [10, 41, 99, 51, 49, 2, 9, 9, 22]
-        },
-        {
-            name: "Luris",
-            data: [10, 41, 99, 51, 49, 2, 9, 9, 22]
-        },
-        {
-            name: "Mike",
-            data: [0, 1, 19, 1, 9, 2, 1, 9, 2]
-        },
-        {
-            name: "UwU",
-            data: [10, 41, 9, 5, 9, 2, 9, 9, 22]
-        }],
+        series: props.series,
         options: {
             chart: {
                 height: 350,
