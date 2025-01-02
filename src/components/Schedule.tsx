@@ -27,7 +27,10 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
     const todayAppointments = appointments.filter(appt => appt.date === date);
     console.log('Found appointments:', todayAppointments);
 
-
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    
+    const canAddAppointment = selectedDate >= currentDate;
 
     return (
         <div className="bg-white h-screen overflow-auto">
@@ -63,14 +66,15 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
             </div>
             
             <div className="flex justify-center mt-auto pb-4">
-                <button 
-                    onClick={() => setIsModalOpen(true)}
-                    className="block text-white bg-indigo-400 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
-                    type="button"
-                >
-                    Add Appointment
-                </button>
-
+                {canAddAppointment && (
+                    <button 
+                        onClick={() => setIsModalOpen(true)}
+                        className="block text-white bg-indigo-400 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+                        type="button"
+                    >
+                        Add Appointment
+                    </button>
+                )}
                 {isModalOpen && (
                     <div 
                         className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50"

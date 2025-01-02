@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {CalendarArrowUp, Save} from "lucide-react"
 import { DoctorData } from "../../data/doctors";
+import { AlertBox } from "../AlertBox";
 
 
 interface AppointmentFormState{
@@ -22,15 +23,9 @@ export const AppointmentForm: React.FC<{desiredDate: string}> = ({desiredDate}) 
         date: ''
     })
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: name === 'date' ? desiredDate : value,
-        }));
-    };
-
     const [errors, setErrors] = useState<Partial<AppointmentFormState>>({})
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
     const doctors = DoctorData.map(d => d.name)
 
@@ -41,13 +36,56 @@ export const AppointmentForm: React.FC<{desiredDate: string}> = ({desiredDate}) 
         {name: 'time', label: 'Time *', type: 'time', required: true},
     ]
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: name === 'date' ? desiredDate : value,
+        }));
+    };
+
+    const validateForm = () => {
+        const newErrors: Partial<AppointmentFormState> = {};
+
+        if(!formData.title.trim()) newErrors.title = 'Title is required';
+        if(!formData.patientName.trim()) newErrors.patientName = 'Patient name is required';
+        if(!formData.consultingDoctor) newErrors.consultingDoctor = 'Consulting doctor is required';
+        if(!formData.time) newErrors.time = 'time is required';
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    }
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if(validateForm()) {
+            console.log('appointment data', formData);
+            setAlertMessage('Added Appointment Successfully!');
+            setShowAlert(true);
+
+            setFormData({
+                title: '',
+                patientName: '',
+                consultingDoctor: '',
+                date: '',
+                time: '',
+            })
+        }
+    }
+
+    const closeAlert = () => {
+        setShowAlert(false);
+    };
+
     return (
         <div className="max-w-4xl p-3 mx-auto bg-white shadow-md rounded-lg">
+             {showAlert && <AlertBox message={alertMessage} onClose={closeAlert} />}
             <div className="flex items-center mb-6">
                 <CalendarArrowUp className="mr-3 text-green-200" size={32} />
                 <h3 className="font-bold text-gray-800">New Appointment for {desiredDate}</h3>
             </div>
-            <form action="">
+            <form onSubmit={handleSubmit}>
                 <div className="flex flex-wrap -mx-2">
                 {inputFields.map((field) => (
                         <div className="w-full md:w-1/2 px-2 mb-2" key={field.name}>
