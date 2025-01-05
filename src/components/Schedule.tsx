@@ -84,6 +84,13 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
                             className="relative p-4 w-full max-w-2xl bg-white rounded-lg"
                             onClick={e => e.stopPropagation()}
                         >
+                            <button
+                                type="button"
+                                className="absolute top-5 right-5 text-gray-400 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex justify-center items-center"
+                                onClick={() => setIsModalOpen(false)}
+                            >
+                                <span className="text-2xl">&times;</span>
+                            </button>
                             <AppointmentForm desiredDate={date}/>
                         </div>
                     </div>
