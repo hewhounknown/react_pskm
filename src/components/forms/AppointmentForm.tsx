@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import {CalendarArrowUp, Save} from "lucide-react"
-import { DoctorData } from "../../data/doctors";
 import { AlertBox } from "../AlertBox";
+import { DoctorData } from "../../data/doctors";
+import { PatientData } from "../../data/patients";
+
 
 
 interface AppointmentFormState{
@@ -27,11 +29,12 @@ export const AppointmentForm: React.FC<{desiredDate: string}> = ({desiredDate}) 
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
 
-    const doctors = DoctorData.map(d => d.name)
+    const doctors = DoctorData.map(d => d.name);
+    const patients = PatientData.map(p => p.name);
 
     const inputFields = [
         {name: 'title', label: 'Title *', type: 'text', required: true},
-        {name: 'patientName', label: 'Patient Name *', type: 'text', required: true},
+        {name: 'patientName', label: 'Patient Name *', type: 'select', options: ['Select a patient', ...patients], required: true},
         {name: 'consultingDoctor', label: 'Consulting Doctor *', type: 'select', options: ['Select a doctor', ...doctors], required: true},
         {name: 'time', label: 'Time *', type: 'time', required: true},
     ]
