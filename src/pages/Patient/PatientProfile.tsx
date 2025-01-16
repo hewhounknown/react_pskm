@@ -1,9 +1,9 @@
 import React from "react";
-import { PatientData } from "../data/patients";
-import { ContactCard } from "../components/cards/ContactCard";
-import PatientIconPath from "../assets/imgs/patient1.png"
-import { ProgressBar } from "../components/charts/ProgressBar";
-import { HistoryTable } from "../components/tables/HistoryTable";
+import { PatientData } from "../../data/patients";
+import { ContactCard } from "../../components/cards/ContactCard";
+import PatientIconPath from "../../assets/imgs/patient1.png"
+import { ProgressBar } from "../../components/charts/ProgressBar";
+import { HistoryTable } from "../../components/tables/HistoryTable";
 
 
 export const PatientProfile: React.FC<{id: number}> = ({id}) => {

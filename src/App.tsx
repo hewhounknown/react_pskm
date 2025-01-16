@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-
 import { Sidebar } from "./components/Sidebar";
 import { TopBar } from "./components/TopBar";
 import { Dashboard } from "./pages/Dashboard";
-import { Patients } from "./pages/Patients";
-import { PatientForm } from "./components/forms/PatientForm";
-import { Doctors } from "./pages/Doctors";
-import { DoctorForm } from "./components/forms/DoctorForm";
-import { Appointment } from "./pages/Appointment";
-import { PatientProfile } from "./pages/PatientProfile";
-import { DoctorProfile } from "./pages/DoctorProfile";
+import { Patients } from "./pages/Patient/Patients";
+import { PatientForm } from "./pages/Patient/PatientForm";
+import { Doctors } from "./pages/Doctor/Doctors";
+import { DoctorForm } from "./pages/Doctor/DoctorForm";
+import { Appointment } from "./pages/Appointment/Appointment";
+import { PatientProfile } from "./pages/Patient/PatientProfile";
+import { DoctorProfile } from "./pages/Doctor/DoctorProfile";
 
 const App: React.FC = () => {
 

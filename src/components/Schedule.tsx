@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppointmentForm } from "./forms/AppointmentForm";
+import { AppointmentForm } from "../pages/Appointment/AppointmentForm";
 
 interface ScheduleProps {
   selectedDate: Date;

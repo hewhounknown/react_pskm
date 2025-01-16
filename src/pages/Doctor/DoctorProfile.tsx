@@ -1,8 +1,8 @@
 import React from "react";
-import { DoctorData } from "../data/doctors";
-import { ContactCard } from "../components/cards/ContactCard";
-import DoctorIconPath from "../assets/imgs/doctor.png"
-import { PerformanceLineChart } from "../components/charts/PerformanceLineChart";
+import { DoctorData } from "../../data/doctors";
+import { ContactCard } from "../../components/cards/ContactCard";
+import DoctorIconPath from "../../assets/imgs/doctor.png"
+import { PerformanceLineChart } from "../../components/charts/PerformanceLineChart";
 
 
 export const DoctorProfile: React.FC<{id: string}> = ({id}) => {

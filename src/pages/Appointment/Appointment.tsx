@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { Calendar } from "../components/Calendar";
-import { Schedule } from "../components/Schedule";
-import { AppointmentData } from "../data/appointments";
+import { Calendar } from "../../components/Calendar";
+import { Schedule } from "../../components/Schedule";
+import { AppointmentData } from "../../data/appointments";
 
 
 export const Appointment: React.FC = () => {

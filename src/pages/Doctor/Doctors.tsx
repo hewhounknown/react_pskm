@@ -1,7 +1,7 @@
 import React from "react";
-import { DoctorTable } from "../components/tables/DoctorTable";
-import { DoctorData } from "../data/doctors";
-import { SearchBox } from "../components/Searchbox";
+import { DoctorTable } from "../../components/tables/DoctorTable";
+import { DoctorData } from "../../data/doctors";
+import { SearchBox } from "../../components/Searchbox";
 
 
 export const Doctors: React.FC = () => {

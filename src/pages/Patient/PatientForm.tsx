@@ -1,34 +1,35 @@
 import React, { useState } from "react";
 import { UserPlus, Save } from 'lucide-react';
-import { AlertBox } from "../AlertBox";
+import {AlertBox} from '../../components/AlertBox';
 
 
-interface DoctorFormState{
+interface PatientFormState {
     name: string;
     dateOfBirth: string;
-    role: string;
     gender: string;
     contactNumber: string;
+    bloodType: string;
     email: string;
     address: string;
-    salary: string ;
-    availability: string;
+    guardian: string;
     [key: string]: string;
 }
 
-export const DoctorForm: React.FC = () => {
-    
-    const [formData, setFormData] = useState<DoctorFormState>({
+export const PatientForm: React.FC = () => {
+    const [formData, setFormData] = useState<PatientFormState>({
         name: '',
         dateOfBirth: '',
-        role: '',
         gender: '',
+        bloodType: '',
         contactNumber: '',
         email: '',
         address: '',
-        salary: '',
-        availability: '',
-    })
+        guardian: ''
+    });
+
+    const [errors, setErrors] = useState<Partial<PatientFormState>>({});
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -38,20 +39,16 @@ export const DoctorForm: React.FC = () => {
         }));
     };
 
-    const [errors, setErrors] = useState<Partial<DoctorFormState>>({})
-    const [showAlert, setShowAlert] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
-
     const validateForm = () => {
-        const newErrors: Partial<DoctorFormState> = {};
-
-        if(!formData.name.trim()) newErrors.name = 'Doctor name is required';
-        if(!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
-        if(!formData.role) newErrors.role = 'Role is required';
-        if(!formData.contactNumber.trim()) newErrors.contactNumber = 'Contact Number is required';
-        if(!formData.availability.trim()) newErrors.availability = 'Availability is required';
-        if(!formData.salary) newErrors.salary = 'Salary is required'
-
+        const newErrors: Partial<PatientFormState> = {};
+    
+        if (!formData.name.trim()) newErrors.name = 'Patient Name is required';
+        if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
+        if (!formData.gender) newErrors.gender = 'Gender is required';
+        if (!formData.contactNumber.trim()) newErrors.contactNumber = 'Contact Number is required';
+        if (!formData.guardian.trim()) newErrors.guardian = 'Guardian is required';
+        
+        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (formData.email && !emailRegex.test(formData.email)) {
           newErrors.email = 'Invalid email format';
@@ -59,52 +56,51 @@ export const DoctorForm: React.FC = () => {
     
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
-    }
+    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         
         if (validateForm()) {
-            console.log('Doctor Registration Data:', formData);
-            setAlertMessage('Patient Registered Successfully!');
-            setShowAlert(true);
-
-            setFormData({
-                name: '',
-                dateOfBirth: '',
-                role: '',
-                gender: '',
-                contactNumber: '',
-                email: '',
-                address: '',
-                salary: '',
-                availability: '',
-            })
+          // TODO: Implement actual patient registration logic
+          console.log('Patient Registration Data:', formData);
+          setAlertMessage('Patient Registered Successfully!');
+          setShowAlert(true);
+          
+          setFormData({
+            name: '',
+            dateOfBirth: '',
+            gender: '',
+            bloodType: '',
+            contactNumber: '',
+            email: '',
+            address: '',
+            guardian: ''
+          });
         }
-    }
+    };
 
     const closeAlert = () => {
         setShowAlert(false);
-    }
+    };
 
     const inputFields = [
         { name: 'name', label: 'Name *', type: 'text', required: true },
         { name: 'dateOfBirth', label: 'Date of Birth *', type: 'date', required: true },
-        { name: 'role', label: 'Role *', type: 'text', required: true },
         { name: 'gender', label: 'Gender *', type: 'select', options: ['Select Gender', 'male', 'female', 'other'], required: true },
+        { name: 'bloodType', label: 'Blood Type', type: 'select', options: ['Select Blood Type', 'A', 'B', 'O', 'AB']},
         { name: 'contactNumber', label: 'Contact Number *', type: 'text', required: true },
-        { name: 'email', label: 'Email', type: 'text'},
-        { name: 'address', label: 'Address', type: 'text'},
-        { name: 'salary', label: 'Salary *', type: 'number', required: true },
-        { name: 'availability', label: 'Availability *', type: 'text', required: true },
+        { name: 'email', label: 'Email', type: 'text' },
+        { name: 'address', label: 'Address', type: 'text' },
+        { name: 'guardian', label: 'Guardian *', type: 'text', required: true },
     ];
 
     return (
-        <div className="max-w-4xl p-5 mx-auto bg-white shadow-md rounded-lg mt-4">
+        <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-4">
             {showAlert && <AlertBox message={alertMessage} onClose={closeAlert} />}
             <div className="flex items-center mb-6">
                 <UserPlus className="mr-3 text-blue-600" size={32} />
-                <h2 className="text-2xl font-bold text-gray-800">New Doctor Registration</h2>
+                <h2 className="text-2xl font-bold text-gray-800">New Patient Registration</h2>
             </div>
             <form onSubmit={handleSubmit}>
                 {/*input block start*/}
@@ -134,8 +130,7 @@ export const DoctorForm: React.FC = () => {
                                         name={field.name}
                                         value={formData[field.name]}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`}
-                                        placeholder={field.name === "availability" ? 'Mon-Fri 8am-5pm, Sat 3pm-9pm...' : ''} />
+                                        className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2`} />
                                 )}
                                 {field.required && errors[field.name] && (
                                     <span className="text-red-500 text-sm">{errors[field.name]}</span>
