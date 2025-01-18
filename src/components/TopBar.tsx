@@ -1,8 +1,11 @@
 import React from "react";
 import {User, BellRing} from 'lucide-react'
+import { useAuth } from "../context/AuthContext";
 
 
 export const TopBar: React.FC = () => {
+    const auth = useAuth();
+
     return (
         <nav className="bg-white dark:bg-gray-900 w-full z-10 top-0
         border-b border-gray-200 dark:border-gray-600 drop-shadow-lg">
@@ -59,6 +62,7 @@ export const TopBar: React.FC = () => {
                         <a
                             className="block w-full whitespace-nowrap px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
                             href="#"
+                            onClick={() => auth?.logout()}
                         >
                             Logout
                         </a>

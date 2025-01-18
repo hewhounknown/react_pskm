@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useAuth } from "../../context/AuthContext";
 
 
 interface LoginFormState{
@@ -15,6 +16,8 @@ export const LoginForm: React.FC = () => {
     });
 
     const [errors, setErrors] = useState<Partial<LoginFormState>>({});
+
+    const auth = useAuth();
 
     const inputFields = [
         {name: "userName", title: "User Name", type: "text", required: true},
@@ -44,6 +47,8 @@ export const LoginForm: React.FC = () => {
 
         if(validateForm()) {
             // login logic here:
+            auth?.login(FormData.userName, FormData.password);
+            return;
         }
     }
 
