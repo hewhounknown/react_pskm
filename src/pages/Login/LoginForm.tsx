@@ -4,6 +4,7 @@ import React, {useState} from "react";
 interface LoginFormState{
     userName: string;
     password: string;
+    [Key: string]: string;
 }
 
 export const LoginForm: React.FC = () => {
@@ -28,9 +29,27 @@ export const LoginForm: React.FC = () => {
         }));
     };
 
+    const validateForm = () => {
+        const newErrors: Partial<LoginFormState> = {};
+
+        if(!FormData.userName.trim()) newErrors.userName = "username is required";
+        if(!FormData.password.trim()) newErrors.password = "password is required";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    }
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if(validateForm()) {
+            // login logic here:
+        }
+    }
+
     return(
         <div>
-            <form action="" className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 {inputFields.map((field) => (
                     <div>
                         <label htmlFor="userName" className="block text-sm/6 font-medium text-gray-900">
@@ -39,10 +58,15 @@ export const LoginForm: React.FC = () => {
                         <input 
                         type={field.type}
                         name={field.name} 
+                        value={FormData[field.name]}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 
                         outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 
                         focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 
                         sm:text-sm/6"/>
+                        {field.required && errors[field.name] && (
+                                    <span className="text-red-500 text-sm">{errors[field.name]}</span>
+                        )}
                     </div>
                 ))}
 
