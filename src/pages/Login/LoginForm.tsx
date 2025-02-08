@@ -2,9 +2,15 @@ import React, {useState} from "react";
 import { useAuth } from "../../context/AuthContext";
 
 
+// enum UserRole{
+//     Admin,
+//     Doctor
+// }
+
 interface LoginFormState{
     userName: string;
     password: string;
+    userRole: string;
     [Key: string]: string;
 }
 
@@ -12,7 +18,8 @@ export const LoginForm: React.FC = () => {
 
     const [FormData, setFormData] = useState<LoginFormState>({
         userName: '',
-        password: ''
+        password: '',
+        userRole: ''
     });
 
     const [errors, setErrors] = useState<Partial<LoginFormState>>({});
@@ -37,6 +44,7 @@ export const LoginForm: React.FC = () => {
 
         if(!FormData.userName.trim()) newErrors.userName = "username is required";
         if(!FormData.password.trim()) newErrors.password = "password is required";
+        if(!FormData.userRole) newErrors.userRole = "user role is required";
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -47,7 +55,7 @@ export const LoginForm: React.FC = () => {
 
         if(validateForm()) {
             // login logic here:
-            auth?.login(FormData.userName, FormData.password);
+            auth?.login(FormData.userName, FormData.password, FormData.userRole);
             return;
         }
     }
@@ -55,6 +63,43 @@ export const LoginForm: React.FC = () => {
     return(
         <div>
             <form onSubmit={handleSubmit} className="space-y-4">
+                <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                        <div className="flex items-center ps-3">
+                            <input 
+                                id="admin-role" 
+                                type="radio" 
+                                value="admin" 
+                                name="userRole"
+                                checked={FormData.userRole === 'admin'}
+                                onChange={handleInputChange}
+                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" 
+                            />
+                            <label htmlFor="admin-role" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Admin
+                            </label>
+                        </div>
+                    </li>
+                    <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                        <div className="flex items-center ps-3">
+                            <input 
+                                id="doctor-role" 
+                                type="radio" 
+                                value="doctor" 
+                                name="userRole"
+                                checked={FormData.userRole === 'doctor'}
+                                onChange={handleInputChange}
+                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" 
+                            />
+                            <label htmlFor="doctor-role" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Doctor
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                {errors.userRole && (
+                    <span className="text-red-500 text-sm">{errors.userRole}</span>
+                )}
                 {inputFields.map((field) => (
                     <div>
                         <label htmlFor="userName" className="block text-sm/6 font-medium text-gray-900">

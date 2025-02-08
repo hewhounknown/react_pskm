@@ -1,7 +1,7 @@
 export const DoctorData = [
     {
         id: "1",
-        name: "Dr. Sarah Smith",
+        name: "Sarah Smith",
         specialty: "Cardiologist",
         availability: "Mon-Wed 9AM-5PM, Fri 9AM-3PM",
         contact: "+1 (555) 123-4567",
@@ -11,6 +11,7 @@ export const DoctorData = [
         email: "sarah.smith@example.com",
         address: "123 Heart Lane, Cardio City",
         salary: 200000,
+        password: "CardioDoc2024!",
     },
     {
         id: "2",
@@ -24,6 +25,7 @@ export const DoctorData = [
         email: "james.wilson@example.com",
         address: "456 Kid's Ave, Pediatric Town",
         salary: 180000,
+        password: "PediaDoc2024!",
     },
     {
         id: "3",
@@ -37,6 +39,7 @@ export const DoctorData = [
         email: "emily.brown@example.com",
         address: "789 Skin St, Dermaville",
         salary: 150000,
+        password: "DermaDoc2024!",
     },
     {
         id: "4",
@@ -50,6 +53,7 @@ export const DoctorData = [
         email: "michael.johnson@example.com",
         address: "321 Bone Blvd, Ortho City",
         salary: 250000,
+        password: "OrthoDoc2024!",
     },
     {
         id: "5",
@@ -63,6 +67,7 @@ export const DoctorData = [
         email: "lisa.white@example.com",
         address: "654 Brain Ave, Neuro Town",
         salary: 220000,
+        password: "NeuroDoc2024!",
     },
     {
         id: "6",
@@ -76,5 +81,6 @@ export const DoctorData = [
         email: "robert.green@example.com",
         address: "987 Health St, Wellness City",
         salary: 160000,
+        password: "GPDoc2024!",
     }
 ]
