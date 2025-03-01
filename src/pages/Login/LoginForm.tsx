@@ -27,7 +27,7 @@ export const LoginForm: React.FC = () => {
     const auth = useAuth();
 
     const inputFields = [
-        {name: "userName", title: "User Name", type: "text", required: true},
+        {name: "email", title: "Email", type: "text", required: true},
         {name: "password", title: "Password", type: "password", required: true}
     ];
 

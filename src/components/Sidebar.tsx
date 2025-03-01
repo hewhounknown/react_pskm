@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { 
     HomeIcon, 
     Users as PatientIcon, 
     User as DoctorIcon, 
     Calendar as CalendarIcon,
     UserRoundPlus as NewPeople,
-    ChevronDown } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+    ChevronDown,
+    BriefcaseMedicalIcon as MedicineIcon,
+    PillIcon } from 'lucide-react';
+
 
 interface MenuItem {
     path?: string;
@@ -45,13 +48,22 @@ export const Sidebar: React.FC = () => {
                 { path: '/new-doctor-form', icon: NewPeople, label: 'Add New Doctor'},
             ]
         },
-        { path: '/appointments', icon: CalendarIcon, label: 'Appointments' }
+        { path: '/appointments', icon: CalendarIcon, label: 'Appointments' },
+        {
+            label: 'Medicine',
+            icon: MedicineIcon,
+            id: 'medicine-dropdown',
+            dropMenus: [
+                { path: '/medicines', icon: PillIcon, label: 'Medicines'}
+            ]
+        }
     ];
 
     const doctorMenuItems: MenuItem[] = [
         { path: '/doc', icon: HomeIcon, label: 'Dashboard' },
         { path: '/doc/patients', icon: PatientIcon, label: 'Patients' },
-        { path: '/doc/appointments', icon: CalendarIcon, label: 'Appointments' }
+        { path: '/doc/appointments', icon: CalendarIcon, label: 'Appointments' },
+        { path: '/doc/medicines', icon: PillIcon, label: 'Medicines'}
     ]
 
     const handleDropdownEnter = (id: string) => {

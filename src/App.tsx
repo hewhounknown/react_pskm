@@ -16,6 +16,7 @@ import { PatientProfile } from "./pages/Patient/PatientProfile";
 import { DoctorProfile } from "./pages/Doctor/DoctorProfile";
 
 import { DoctorDashboard } from "./pages/Dashboard/DoctorDashboard";
+import { Medicines } from "./pages/Medicine/Medicines";
 
 
 const App: React.FC = () => {
@@ -48,6 +49,7 @@ const App: React.FC = () => {
                     <Route path="/doctors" element={<Doctors />} />
                     <Route path="/new-doctor-form" element={<DoctorForm />} />
                     <Route path="/appointments" element={<Appointment />} />
+                    <Route path="/medicines" element={<Medicines />} />
                     <Route path="/patients/profile/:id" element={<PatientProfileWrapper />} />
                     <Route path="/doctors/profile/:id" element={<DoctorProfileWrapper />} />
                 </Route>
@@ -71,6 +73,7 @@ const App: React.FC = () => {
                     <Route path="/doc" element={<DoctorDashboard />} />
                     <Route path="/doc/patients" element={<Patients />} />
                     <Route path="/doc/appointments" element={<Appointment />} />
+                    <Route path="/doc/medicines" element={<Medicines />} />
                 </Route>
             </Routes>
         </AuthProvider>
