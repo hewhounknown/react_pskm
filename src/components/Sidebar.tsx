@@ -7,12 +7,25 @@ import {
     Calendar as CalendarIcon,
     UserRoundPlus as NewPeople,
     ChevronDown } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+
+interface MenuItem {
+    path?: string;
+    icon: React.FC<any>;
+    label: string;
+    id?: string;
+    dropMenus?: Array<{
+        path: string;
+        icon: React.FC<any>;
+        label: string;
+    }>;
+}
 
 export const Sidebar: React.FC = () => {
     const location = useLocation();
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-    const menuItems = [
+    const adminMenuItems: MenuItem[] = [
         { path: '/', icon: HomeIcon, label: 'Dashboard' },
         {
             label: 'Patient', 
@@ -35,6 +48,12 @@ export const Sidebar: React.FC = () => {
         { path: '/appointments', icon: CalendarIcon, label: 'Appointments' }
     ];
 
+    const doctorMenuItems: MenuItem[] = [
+        { path: '/doc', icon: HomeIcon, label: 'Dashboard' },
+        { path: '/doc/patients', icon: PatientIcon, label: 'Patients' },
+        { path: '/doc/appointments', icon: CalendarIcon, label: 'Appointments' }
+    ]
+
     const handleDropdownEnter = (id: string) => {
         setActiveDropdown(id);
     };
@@ -47,6 +66,9 @@ export const Sidebar: React.FC = () => {
     const isDropdownActive = (dropMenus: Array<{ path: string }>) => {
         return dropMenus.some(item => location.pathname === item.path);
     };
+
+    const auth = useAuth()
+    const menuItems = auth?.user?.roles.includes('admin') ? adminMenuItems : doctorMenuItems;
     
     return (
         <div className="bg-slate-800 shadow-md h-screen w-24 md:w-64 transition-all">
@@ -118,7 +140,7 @@ export const Sidebar: React.FC = () => {
                             </div>
                         ) : (
                             <Link 
-                                to={item.path} 
+                                to={item.path || '/'}
                                 className={`
                                     flex items-center p-3 mb-2 rounded-lg
                                     transition-colors duration-200

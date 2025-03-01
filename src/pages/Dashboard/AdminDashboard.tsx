@@ -1,11 +1,11 @@
 import React from 'react';
-import { statsCards } from '../data/statscards';
-import { StatCard } from '../components/cards/StatCard';
-import { PerformanceLineChart } from '../components/charts/PerformanceLineChart';
-import { RoomStatusDonutChart } from '../components/charts/RoomStatusDonutChart';
+import { statsCards } from '../../data/statscards';
+import { StatCard } from '../../components/cards/StatCard';
+import { PerformanceLineChart } from '../../components/charts/PerformanceLineChart';
+import { RoomStatusDonutChart } from '../../components/charts/RoomStatusDonutChart';
 
 
-export const Dashboard: React.FC = () => {
+export const AdminDashboard: React.FC = () => {
 
   // TODO: replace this sample series with calculated data later
   const series = [{

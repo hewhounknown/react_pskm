@@ -13,52 +13,63 @@ interface AuthContextType {
 
 interface User {
   id: string;
-  userName: string;
+  email: string;
   password: string;
+  roles: string[];
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null>(() => {
+        const savedUser = localStorage.getItem('user');
+        return savedUser ? JSON.parse(savedUser) : null;
+    });
     const navigate = useNavigate();
 
-    const login = async(userName: string, password: string, userRole: string) => {
-        //replace actual login logic here:
+    const login = async(email: string, password: string, userRole: string) => {
         try {
-            if(userRole == 'admin'){
-              const user = AdminData.find(u => u.userName == userName && u.password == password);
-
-              if (user) {
-                  setUser(user);
+            if(userRole === "admin"){
+              const admin = AdminData.find(u => u.email === email && u.password === password);
+              if (admin) {
+                  const userData = {
+                    ...admin,
+                    roles: ["admin"]
+                  };
+                  setUser(userData);
+                  localStorage.setItem('user', JSON.stringify(userData));
                   navigate('/');
+                  return;
               }
-            } else if(userRole == 'doctor'){
-              const doctor = DoctorData.find(d => d.name == userName && d.password == password);
-
+            } else if(userRole === 'doctor'){
+              const doctor = DoctorData.find(d => d.email === email && d.password === password);
               if (doctor) {
-                setUser({
+                const userData = {
                   id: doctor.id,
-                  userName: doctor.name,
-                  password: doctor.password
-                });
+                  email: doctor.email,
+                  password: doctor.password,
+                  roles: ["doctor"]
+                };
+                setUser(userData);
+                localStorage.setItem('user', JSON.stringify(userData));
                 navigate('/doc/');
+                return;
               }
             }
-              
-            throw new Error("login failed");
-          
+            throw new Error("Invalid credentials");
         } catch (err) {
             console.error(err);
+            throw err;
         }
     }
 
     const logout = () => {
       setUser(null);
+      localStorage.removeItem('user');
       navigate('/login');
     }
 
-    const value: AuthContextType ={
+    const value: AuthContextType = {
       user,
       login,
       logout
