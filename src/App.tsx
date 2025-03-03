@@ -4,8 +4,8 @@ import AuthProvider from "./context/AuthContext";
 import PrivateRoute from "./router/Route";
 import { Login } from "./pages/Login/Login";
 
-import { Sidebar } from "./components/Sidebar";
-import { TopBar } from "./components/TopBar";
+import { Sidebar } from "./layout/Sidebar";
+import { TopBar } from "./layout/TopBar";
 import { AdminDashboard } from "./pages/Dashboard/AdminDashboard";
 import { Patients } from "./pages/Patient/Patients";
 import { PatientForm } from "./pages/Patient/PatientForm";
