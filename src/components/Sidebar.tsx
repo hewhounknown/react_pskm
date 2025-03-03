@@ -49,14 +49,7 @@ export const Sidebar: React.FC = () => {
             ]
         },
         { path: '/appointments', icon: CalendarIcon, label: 'Appointments' },
-        {
-            label: 'Medicine',
-            icon: MedicineIcon,
-            id: 'medicine-dropdown',
-            dropMenus: [
-                { path: '/medicines', icon: PillIcon, label: 'Medicines'}
-            ]
-        }
+        { path: '/medicines', icon: PillIcon, label: 'Medicines'}
     ];
 
     const doctorMenuItems: MenuItem[] = [
