@@ -6,11 +6,7 @@ import { MedicineForm } from "./MedicineForm";
 
 
 export const Medicines: React.FC<{ isDoctorTable?: boolean}> = ({isDoctorTable = false}) => {
-    const [showModal, setShowModal] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const handleShowModal = () => setShowModal(true);
-    const handleCloseModal = () => setShowModal(false);
 
 
     return(
