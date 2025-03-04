@@ -4,9 +4,10 @@ import { Schedule } from "../../components/Schedule";
 import { AppointmentData } from "../../data/appointments";
 import { DoctorData } from "../../data/doctors";
 import { PatientData } from "../../data/patients";
+import { useAuth } from "../../context/AuthContext";
 
 
-export const Appointment: React.FC = () => {
+export const Appointment: React.FC<{ isDoctorPortal?: boolean}> = ({isDoctorPortal= false}) => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     console.log(selectedDate)
 
@@ -25,7 +26,13 @@ export const Appointment: React.FC = () => {
         };
     }
 
-    const appointments = AppointmentData.map(app => formatAppointment(app));
+    const auth = useAuth()
+
+    const filteredAppointmentData = isDoctorPortal 
+        ? AppointmentData.filter(app => app.doctorId == auth?.user?.id)
+        : AppointmentData
+
+    const appointments = filteredAppointmentData.map(app => formatAppointment(app));
 
     return (
         <div className="grid grid-cols-3 gap-1">
@@ -33,7 +40,7 @@ export const Appointment: React.FC = () => {
                 <Calendar
                     selectedDate={selectedDate}
                     onDateSelect={setSelectedDate}
-                    appointments={AppointmentData}
+                    appointments={filteredAppointmentData}
                 />
             </div>
             <div>

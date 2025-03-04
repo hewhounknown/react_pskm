@@ -8,7 +8,7 @@ import { useAuth } from "../../context/AuthContext";
 // }
 
 interface LoginFormState{
-    userName: string;
+    email: string;
     password: string;
     userRole: string;
     [Key: string]: string;
@@ -17,7 +17,7 @@ interface LoginFormState{
 export const LoginForm: React.FC = () => {
 
     const [FormData, setFormData] = useState<LoginFormState>({
-        userName: '',
+        email: '',
         password: '',
         userRole: ''
     });
@@ -42,7 +42,7 @@ export const LoginForm: React.FC = () => {
     const validateForm = () => {
         const newErrors: Partial<LoginFormState> = {};
 
-        if(!FormData.userName.trim()) newErrors.userName = "username is required";
+        if(!FormData.email.trim()) newErrors.email = "email is required";
         if(!FormData.password.trim()) newErrors.password = "password is required";
         if(!FormData.userRole) newErrors.userRole = "user role is required";
 
@@ -55,7 +55,7 @@ export const LoginForm: React.FC = () => {
 
         if(validateForm()) {
             // login logic here:
-            auth?.login(FormData.userName, FormData.password, FormData.userRole);
+            auth?.login(FormData.email, FormData.password, FormData.userRole);
             return;
         }
     }
@@ -102,7 +102,7 @@ export const LoginForm: React.FC = () => {
                 )}
                 {inputFields.map((field) => (
                     <div>
-                        <label htmlFor="userName" className="block text-sm/6 font-medium text-gray-900">
+                        <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                             {field.title}
                         </label>
                         <input 

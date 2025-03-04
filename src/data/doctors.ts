@@ -39,7 +39,7 @@ export const DoctorData = [
         email: "emily.brown@example.com",
         address: "789 Skin St, Dermaville",
         salary: 150000,
-        password: "DermaDoc2024!",
+        password: "P@ssw0rd",
     },
     {
         id: "4",

@@ -72,8 +72,9 @@ const App: React.FC = () => {
                 }>
                     <Route path="/doc" element={<DoctorDashboard />} />
                     <Route path="/doc/patients" element={<Patients />} />
-                    <Route path="/doc/appointments" element={<Appointment />} />
-                    <Route path="/doc/medicines" element={<Medicines />} />
+                    <Route path="/doc/patients/profile/:id" element={<PatientProfileWrapper />} />
+                    <Route path="/doc/appointments" element={<Appointment isDoctorPortal />} />
+                    <Route path="/doc/medicines" element={<Medicines isDoctorTable />} />
                 </Route>
             </Routes>
         </AuthProvider>

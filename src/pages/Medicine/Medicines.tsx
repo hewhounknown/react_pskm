@@ -5,7 +5,7 @@ import { medicineData } from "../../data/medicines";
 import { MedicineForm } from "./MedicineForm";
 
 
-export const Medicines: React.FC = () => {
+export const Medicines: React.FC<{ isDoctorTable?: boolean}> = ({isDoctorTable = false}) => {
     const [showModal, setShowModal] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,12 +17,13 @@ export const Medicines: React.FC = () => {
         <div className="m-3">
             <div className="flex justify-between">
                 <div>
-                <button
+                    {!isDoctorTable && (
+                    <button
                         onClick={() => setIsModalOpen(true)}
-                        className="bg-cyan-500 text-white px-3 py-2 rounded-md hover:bg-cyan-800 transition duration-200"
-                    >
+                        className="bg-cyan-500 text-white px-3 py-2 rounded-md hover:bg-cyan-800 transition duration-200">
                         Add New
                     </button>
+                    )}
                 </div>
                 <div>
                 <SearchBox />
