@@ -2,11 +2,30 @@ import React, {useState} from "react";
 import { Calendar } from "../../components/Calendar";
 import { Schedule } from "../../components/Schedule";
 import { AppointmentData } from "../../data/appointments";
+import { DoctorData } from "../../data/doctors";
+import { PatientData } from "../../data/patients";
 
 
 export const Appointment: React.FC = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     console.log(selectedDate)
+
+    function formatAppointment(appointment: any ) {
+        let doctorName = DoctorData.find(doc=> doc.id == appointment.doctorId)?.name;
+        let patientName = PatientData.find(p=> p.id == appointment.patientId)?.name;
+
+        return {
+            id: appointment.id,
+            date: appointment.date,
+            time: appointment.time,
+            title: appointment.title,
+            status: appointment.status,
+            doctorName: doctorName,
+            patientName: patientName
+        };
+    }
+
+    const appointments = AppointmentData.map(app => formatAppointment(app));
 
     return (
         <div className="grid grid-cols-3 gap-1">
@@ -20,7 +39,7 @@ export const Appointment: React.FC = () => {
             <div>
                 <Schedule
                     selectedDate={selectedDate}
-                    appointments={AppointmentData}
+                    appointments={appointments}
                 />
             </div>
         </div>

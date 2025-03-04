@@ -50,14 +50,18 @@ export const Schedule: React.FC<ScheduleProps> = ({ selectedDate, appointments }
                             key={appointment.id}
                             className="border rounded-lg p-4 hover:bg-gray-100"
                         >
-                            <div className="flex flex-col md:flex-row justify-between">
-                            <div className="mb-2 md:mb-0">
-                                <h3 className="font-medium">{appointment.title}</h3>
-                                <p className="text-sm text-gray-500">{appointment.description}</p>
+                            <div className="flex flex-col md:flex-row justify-between mb-4 px-4 py-2 bg-blue-200">
+                                <div>
+                                    <h5>{appointment.status}</h5>
+                                </div>
+                                <span className="text-sm font-medium">
+                                    {appointment.time}
+                                </span>
                             </div>
-                            <span className="text-sm font-medium">
-                                {appointment.time}
-                            </span>
+                            <div className="mb-2 md:mb-0">
+                                <p className="text-sm text-gray-500">{appointment.patientName}</p>
+                                <h3 className="font-medium">{appointment.title}</h3>
+                                <p className="text-sm text-gray-500">{appointment.doctorName}</p>
                             </div>
                         </div>
                         ))
